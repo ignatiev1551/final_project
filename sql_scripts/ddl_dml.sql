@@ -1,7 +1,6 @@
 /*
 cards
 */
-drop table if exists cards;
 create table if not exists cards(
 	card_num varchar(128) primary key, 
 	account varchar(128), 
@@ -599,8 +598,6 @@ values ('2696 7847 9960 9133', 	'40817810852586260772', '2001-01-01', null);
 /*
 accounts
 */
-
-drop table if exists accounts;
 create table if not exists accounts(
 	account varchar(128) primary key, 
 	valid_to date, 
@@ -769,8 +766,6 @@ insert into accounts (account, valid_to, client, create_dt, update_dt)
 /*
 clients
 */
-
-drop table if exists clients;
 create table if not exists clients(
     client_id varchar(128) primary key, 
     last_name varchar(128), 

@@ -17,7 +17,10 @@ def execute_sql_scripts(filepath, credentials):
         cursor.execute("CREATE SCHEMA IF NOT EXISTS DWH")
         connection.commit()       
         cursor.execute("SET SEARCH_PATH TO DWH")
-        # Запускаем выполение sql скрипта, прочитанного из файла
+        # Запускаем выполение sql скрипта, прочитанного из файла, предварительно удалив таблицы создаваемые данным скриптом
+        cursor.execute("DROP TABLE IF EXISTS dwh_dim_cards CASCADE")
+        cursor.execute("DROP TABLE IF EXISTS dwh_dim_accounts CASCADE")
+        cursor.execute("DROP TABLE IF EXISTS dwh_dim_clients CASCADE")
         cursor.execute(sql_scripts_modified)
         connection.commit()
     except Exception as e:
